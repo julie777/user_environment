@@ -1,0 +1,50 @@
+# /bin/bash
+
+count_off="\["  # don't count the following characters as part of the prompt line
+count_on="\]"
+clear_to_eol="\e[K"
+clear_to_end_of_screen="\e[K"
+save_cursor="\e[s"
+restore_cursor="\e[u"
+move_to_status_line="\e[\${status_line};1H"  # delay status_line evaluation until after it gets set
+
+
+Reset='\e[0m'       # Text Reset
+ResetFG='\[\e[0m\]'       # Text Reset
+
+Bold='\[\e[1;;m\]'
+NoBold='\[\e[0;;m\]'
+
+BG='\e[48;5;236m'
+
+# Regular Colors
+Black='\e[30m'        # Black
+Red='\e[31m'          # Red
+Green='\e[32m'        # Green
+Yellow='\e[33m'       # Yellow
+Blue='\e[34m'         # Blue
+Purple='\e[35m'       # Purple
+Cyan='\e[36m'         # Cyan
+White='\e[37m'        # White
+
+# Bold
+BBlack='\e[1;30m'       # Black
+BRed='\e[1;31m'         # Red
+BGreen='\e[1;32m'       # Green
+BYellow='\e[1;33m'      # Yellow
+BBlue='\e[1;34m'        # Blue
+BPurple='\e[1;35m'      # Purple
+BCyan='\e[1;36m'        # Cyan
+BWhite='\e[1;37m'       # White
+
+# Background
+B_Black='\[\e[40m\]'       # Black
+B_Red='\[\e[41m\]'         # Red
+B_Green='\[\e[42m\]'       # Green
+B_Yellow='\[\e[43m\]'      # Yellow
+B_Blue='\[\e[44m\]'        # Blue
+B_Purple='\[\e[45m\]'      # Purple
+B_Cyan='\[\e[46m\]'        # Cyan
+B_White='\[\e[47m\]'       # White
+ResetBG='\[\e[49m\]'       # Text Reset
+

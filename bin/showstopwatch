@@ -1,0 +1,12 @@
+#!/usr/bin/python
+
+import sys
+import pickle
+
+info = pickle.load(open(sys.argv[1]))
+
+bytime = [(t, n) for (n, t) in info.items()]
+bytime.sort()
+for t, n in bytime:
+    print '%6.2f  %s' % (t, n)
+

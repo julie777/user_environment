@@ -1,0 +1,24 @@
+#!/bin/bash
+
+
+
+sroot=/opt/move/share/versions/cms
+troot=/opt/move/share/versions/move-cms-7.13.171
+tsite=$troot/lib/python2.7/site-packages
+opts=-Prhz
+excludes="--exclude '*.pyc' --exclude '*.pyo'"
+user=cmsmgt
+
+rsync ${opts} ${excludes} ${sroot}/static/ ${user}@52.11.195.243:${troot}/static/
+for comp in cms CMS events metadata_transform mnpy publish3 pycommon QIS SD Streamlets webservice
+do
+    rsync ${opts} ${excludes} ${sroot}/${comp}/ ${user}@52.11.195.243:${tsite}/${comp}/
+done
+
+#rsync -a --exclude=pattern_to_exclude --include=pattern_to_include source destination
+#-azP
+# --delete
+#don't use -a because users will be wrong
+#rsync -avzhe ssh --progress
+#--include 'R*' --exclude '*'
+#rsync -rvh /opt/move/cms/cms/ ubuntu@52.11.195.243:/opt/move/share/version/cms/lib/python2.7/site_packages/cms

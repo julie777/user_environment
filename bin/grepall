@@ -1,0 +1,2 @@
+grep --include "*.py" --include "*.yaml" --include "*.conf" --include "*.json" -r --exclude-dir local --exclude-dir pyenv --exclude-dir lib $*   /opt/move
+grep  --include "*.yaml" --include "*.py" --include "*.conf" --include "*.json"   -r --exclude-dir local --exclude-dir pyenv --exclude-dir lib $*  ~

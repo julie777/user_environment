@@ -1,0 +1,2 @@
+ps axu | grep python | sed 's/\s\+/ /g' | cut -d' ' -f2,11- | grep -v wing | grep -v grep | cut -d' ' -f1,3-
+

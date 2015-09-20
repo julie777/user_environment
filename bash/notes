@@ -1,0 +1,1 @@
+alias term_size='echo "Rows=$(tput lines) Cols=$(tput cols)"'

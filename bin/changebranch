@@ -1,0 +1,8 @@
+#!/bin/bash
+
+git checkout $1
+git submodule update
+find . -name "*.pyc" -delete
+./waf configure build install
+sudo restart app_2_4
+

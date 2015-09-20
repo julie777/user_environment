@@ -1,0 +1,77 @@
+#!/usr/bin/python
+import os
+import sys
+import threading
+import subprocess
+from collections import defaultdict
+import multiprocessing
+import argparse
+
+
+counts = defaultdict(int)
+
+
+def find_root(d):
+    d = os.path.abspath(d)
+    if os.path.isdir(d) and 'pyenv' in os.listdir(d):
+        return d
+    return find_root(os.path.dirname(d))
+
+
+def main(items_to_check, sortbycount=False, quiet=False):
+    if items_to_check == ['.']:
+        root = os.path.abspath('.')
+        items_to_check = [x for x in os.listdir('.') if x != 'pyenv' and not x.startswith('.') and (os.path.isdir(x) or x.endswith('.py'))]
+    else:
+        root = find_root(items_to_check[0])
+    assert root
+    rcfile = os.path.join(root, 'pylintrc')
+    try:
+        args = [os.path.join(root, 'pyenv/bin/pylint'), '-s', 'y', '--rcfile=/dev/null', '--max-line-length', '120']
+        args += items_to_check
+        print ' '.join(args)
+        output = subprocess.check_output(args)
+        print output
+    except subprocess.CalledProcessError as e:
+        for l in e.output.split('\n'):
+            l = l.strip()
+            #if len(l) > 5 and l[5] == ':':
+            if l.startswith('|'):
+                parts = [p.strip() for p in l.split('|') if p.strip()]
+                if len(parts) == 2 and len(parts[0]) == 5:
+                    id, count =  parts
+                    try:
+                        counts[id] += int(count)
+                    except:
+                        pass
+
+    if not quiet:
+        print 'Pylint Results'
+    items = counts.items()
+    if sortbycount:
+        items.sort(key=lambda item: item[1])
+    else:
+        items.sort()
+
+    for name, value in items:
+        if config.itemidonly:
+            print name
+        else:
+            message = subprocess.check_output(['pylint', '--help-msg=%s' % name])
+            message = message[8:].split(')')[0]
+            print '%s %6d  %s' % (name, value, message)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-c', '--sort-by-count', action='store_true', dest='sortbycount',
+                        help='sort results by count instead of by item id')
+    parser.add_argument('-q', '--quiet', action='store_true',
+                        help='suppress informational messages and only show counts')
+    parser.add_argument('-i', '--item-id-only', action='store_true', dest='itemidonly',
+                        help='just show item id for items with count > 0')
+    parser.add_argument('items_to_check', default='.', nargs='+',
+                        help='items_to_check for finding files to be processed')
+    global config
+    config = parser.parse_args()
+    main(config.items_to_check, config.sortbycount, config.quiet)

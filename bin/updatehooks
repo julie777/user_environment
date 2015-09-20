@@ -1,0 +1,20 @@
+#!/usr/bin/python
+
+import os
+
+HOOKSDIR = '/home/julie/githooks'
+
+
+for r, sds, files in os.walk(os.path.abspath('/opt/move')):
+    #print r
+    if os.path.basename(r) == 'hooks':
+        print 'in', r
+        for hookname in os.listdir(HOOKSDIR):
+            hook = os.path.join(r, hookname)
+            if os.path.exists(hook):
+                print os.path.islink(hook)
+                print os.stat(hook)
+            else:
+                print 'hooking', hookname, 'in', r
+                os.symlink(os.path.join(HOOKSDIR, hookname), hook)
+

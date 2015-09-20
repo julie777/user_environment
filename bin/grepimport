@@ -1,0 +1,2 @@
+grep --include "*.py" -r --exclude-dir local --exclude-dir pyenv --exclude-dir lib $*   /opt/move ~ | grep import
+

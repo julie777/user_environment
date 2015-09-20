@@ -1,0 +1,3 @@
+#!/bin/bash
+
+grep --include "*.py" -r --exclude-dir local --exclude-dir tmp --exclude-dir pyenv --exclude-dir lib $* .

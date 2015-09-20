@@ -1,0 +1,9 @@
+#!/usr/bin/python
+import os
+import pickle
+
+x = pickle.load(open('.nose-stopwatch-times'))
+x = [(time, name) for (name, time) in x.items()]
+x.sort()
+for time, name in x:
+    print '%8.3f    %s' % (time, name)

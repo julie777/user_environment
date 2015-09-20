@@ -1,0 +1,4 @@
+#!/bin/bash
+
+scp $1 ubuntu@q-aws2-cmsnode-22.q.movetv.com:$2
+

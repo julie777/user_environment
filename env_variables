@@ -1,0 +1,40 @@
+USER=julie
+LOGNAME=julie
+HOME=/home/julie
+
+SHELL=/bin/bash
+SHLVL=1
+
+MAIL=/var/mail/julie
+PATH=/home/julie/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+EDITOR=vi
+TERM=xterm-256color
+DISPLAY=localhost:12.0
+
+LANG=en_US.UTF-8
+LANGUAGE=en_US:
+
+PWD=/home/julie
+OLDPWD=/home/julie/.bash
+_=/usr/bin/env
+
+
+# virtualenv
+VIRTUAL_ENV=
+VIRTUAL_ENV_DISABLE_PROMPT=1
+# virtualenvwarpper
+VIRTUALENVWRAPPER_HOOK_DIR=/home/julie/venvs
+VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+VIRTUALENVWRAPPER_PROJECT_FILENAME=.project
+WORKON_HOME=/home/julie/venvs
+VIRTUALENVWRAPPER_WORKON_CD=1
+
+? SSH_CLIENT=192.168.91.1 58279 22
+? SSH_TTY=/dev/pts/2
+
+LS_COLORS=
+SSH_CONNECTION=192.168.91.1 58279 192.168.91.10 22
+
+LESSOPEN=| /usr/bin/lesspipe %s
+LESSCLOSE=/usr/bin/lesspipe %s %s
+HISTTIMEFORMAT=%Y-%m-%d %H:%M:%S

@@ -1,0 +1,36 @@
+#!/usr/bin/python
+
+import os
+import sys
+import itertools
+
+'''
+TODO:
+    add prompt for commands to make complex commands easier to enter
+    add input commands from file
+    add kill command while running
+
+    add commandline handling
+        --time
+        --count
+        --pause - don't wait for input just sleep this long:wq
+
+    '''
+
+
+# get commands
+# each arg is a command
+if len(sys.argv) > 1:
+    commands = sys.argv[1:]
+
+else:
+    print 'ask for commands'
+
+
+# run in perpetual loop
+for cmd in itertools.cycle(commands):
+    os.system(cmd)
+    input = raw_input('<paused - "x" to quit>')
+    if input.lower() == 'x':
+        break
+

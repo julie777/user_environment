@@ -1,0 +1,390 @@
+# /bin/bash
+
+# References:
+#  There is an excellent reference page describing how to colourize your bash prompt
+#  on the Arch Linux wiki.
+# Crazy POWERFUL Bash Prompt: http://www.askapache.com/linux/bash-power-prompt.html
+# Ultimate GIT PS1 bash prompt: http://mediadoneright.com/content/ultimate-git-ps1-bash-prompt
+#
+# ascii table: http://ascii-table.com/ansi-escape-sequences.php
+
+# the \ before the $(date delays excution of date until PS1 is expanded instead of during definition
+#
+# PS1="[${Blue}\$(date +%H%M%S)][\u@\h:\w]\$ "
+
+# There is an excellent reference page describing how to colourize your bash prompt
+# on the Arch Linux wiki.
+#
+# As an example, a simple prompt like:
+
+# Bash allows these prompt strings to be customized by inserting a
+# number of backslash-escaped special characters that are
+# decoded as follows:
+#
+#     \a      an ASCII bell character (07)
+#     \d      the date in "Weekday Month Date" format (e.g., "Tue May 26")
+#     \D{format}  the format is passed to strftime(3) and the result
+#               is inserted into the prompt string an empty format
+#               results in a locale-specific time representation.
+#               The braces are required
+#     \e      an ASCII escape character (033)
+#     \h      the hostname up to the first `.'
+#     \H      the hostname
+#     \j      the number of jobs currently managed by the shell
+#     \l      the basename of the shell's terminal device name
+#     \n      newline
+#     \r      carriage return
+#     \s      the name of the shell, the basename of $0 (the portion following
+#               the final slash)
+#     \t      the current time in 24-hour HH:MM:SS format
+#     \T      the current time in 12-hour HH:MM:SS format
+#     \@      the current time in 12-hour am/pm format
+#     \A      the current time in 24-hour HH:MM format
+#     \u      the username of the current user
+#     \v      the version of bash (e.g., 2.00)
+#     \V      the release of bash, version + patch level (e.g., 2.00.0)
+#     \w      the current working directory, with $HOME abbreviated with a tilde
+#     \W      the basename of the current working directory, with $HOME
+#              abbreviated with a tilde
+#     \!      the history number of this command
+#     \#      the command number of this command
+#     \$      if the effective UID is 0, a #, otherwise a $
+#     \nnn        the character corresponding to the octal number nnn
+#     \\      a backslash
+#     \[      begin a sequence of non-printing characters, which could be used
+#               to embed a terminal control sequence into the prompt
+#     \]      end a sequence of non-printing characters
+#
+#     The command number and the history number are usually different:
+#     the history number of a command is its position in the history
+#     list, which may include commands restored from the history file
+#     (see HISTORY below), while the command number is the position in
+#     the sequence of commands executed during the current shell session.
+#     After the string is decoded, it is expanded via parameter
+#     expansion, command substitution, arithmetic expansion, and quote
+#     removal, subject to the value of the promptvars shell option (see
+#     the description of the shopt command under SHELL BUILTIN COMMANDS
+#     below).
+
+# ################# COLORS
+
+Reset='\e[0m'       # Text Reset
+ResetFG='\[\e[0m\]'       # Text Reset
+
+Bold='\[\e[1;;m\]'
+NoBold='\[\e[0;;m\]'
+
+BG='\e[48;5;236m'
+
+# Regular Colors
+Black='\e[30m'        # Black
+Red='\e[31m'          # Red
+Green='\e[32m'        # Green
+Yellow='\e[33m'       # Yellow
+Blue='\e[34m'         # Blue
+Purple='\e[35m'       # Purple
+Cyan='\e[36m'         # Cyan
+White='\e[37m'        # White
+
+# Bold
+BBlack='\e[1;30m'       # Black
+BRed='\e[1;31m'         # Red
+BGreen='\e[1;32m'       # Green
+BYellow='\e[1;33m'      # Yellow
+BBlue='\e[1;34m'        # Blue
+BPurple='\e[1;35m'      # Purple
+BCyan='\e[1;36m'        # Cyan
+BWhite='\e[1;37m'       # White
+
+# High Intensity
+IBlack='\[\e[0;90m\]'       # Black
+IRed='\[\e[0;91m\]'         # Red
+IGreen='\[\e[0;92m\]'       # Green
+IYellow='\[\e[0;93m\]'      # Yellow
+IBlue='\[\e[0;94m\]'        # Blue
+IPurple='\[\e[0;95m\]'      # Purple
+ICyan='\[\e[0;96m\]'        # Cyan
+IWhite='\[\e[0;97m\]'       # White
+
+# Bold High Intensity
+BIBlack='\[\e[1;90m\]'      # Black
+BIRed='\[\e[1;91m\]'        # Red
+BIGreen='\[\e[1;92m\]'      # Green
+BIYellow='\[\e[1;93m\]'     # Yellow
+BIBlue='\[\e[1;94m\]'       # Blue
+BIPurple='\[\e[1;95m\]'     # Purple
+BICyan='\[\e[1;96m\]'       # Cyan
+BIWhite='\[\e[1;97m\]'      # White
+
+# Background
+B_Black='\[\e[40m\]'       # Black
+B_Red='\[\e[41m\]'         # Red
+B_Green='\[\e[42m\]'       # Green
+B_Yellow='\[\e[43m\]'      # Yellow
+B_Blue='\[\e[44m\]'        # Blue
+B_Purple='\[\e[45m\]'      # Purple
+B_Cyan='\[\e[46m\]'        # Cyan
+B_White='\[\e[47m\]'       # White
+ResetBG='\[\e[49m\]'       # Text Reset
+
+# High Intensity backgrounds
+B_IBlack='\[\e[0;100m\]'   # Black
+B_IRed='\[\e[0;101m\]'     # Red
+B_IGreen='\[\e[0;102m\]'   # Green
+B_IYellow='\[\e[0;103m\]'  # Yellow
+B_IBlue='\[\e[0;104m\]'    # Blue
+B_IPurple='\[\e[0;105m\]'  # Purple
+B_ICyan='\[\e[0;106m\]'    # Cyan
+B_IWhite='\[\e[0;107m\]'   # White
+
+
+# ######### GIT
+# FROM: http://ithaca.arpinum.org/2013/01/02/git-prompt.html
+
+get_sha() {
+    git rev-parse --short HEAD 2>/dev/null
+}
+
+
+#
+#
+# inally, there are a number of variables that you can set in your shell that __git_ps1 will
+# pick up on.
+#
+# IT_PS1_SHOWDIRTYSTATE=1
+# IT_PS1_SHOWSTASHSTATE=1
+# IT_PS1_SHOWUNTRACKEDFILES=1
+#  Explicitly unset color (default anyhow). Use 1 to set it.
+# IT_PS1_SHOWCOLORHINTS=
+# IT_PS1_DESCRIBE_STYLE="branch"
+# IT_PS1_SHOWUPSTREAM="auto git"
+#
+# The variables set to 1 can be set to any non-empty value. The others provide choices.
+# (For more details about what each of these does, read through git-prompt.sh.)
+# If these variables are set, __git_ps1 will automatically display information about
+# the state of your repository by adding various symbols to your prompt.
+# SHOWCOLORHINTS also adds color to your prompt, as the name suggests.
+# (This only works if you use one of the two PROMPT_COMMAND methods.)
+#
+# ets assume Ive set the values as above. The result might look something like this:
+#
+# chilles dotfiles [master *+= 1a9c53b] $
+#
+# he * tells me that I have unstaged changes in the repo. The + tells me that I have staged
+# changes in the repo. The = tells me that Im neither ahead of nor behind the remote branch.
+# (A < means Im behind, a > means Im ahead and <> shows that the branches have diverged.)
+#
+# sing these environment variables in combination with __git_ps1 effectively removes the need
+# for the 50-100 line custom scripts that many people have been using for years to munge
+# Git information into their prompts. (You obviously have slightly less control over what
+# characters show up as hints, but if you really want to control that, you can edit
+# git-prompt.sh itself.) The bottom line is that I trust the maintainers of this script
+# to keep up with changes in how git provides information much more than myself. It also
+# means not everyone on the planet has to create their own munging functions.
+# ne Last Thing
+#
+# inally, PROMPT_COMMAND can include more than one command. If you want to use it both for
+# your PS1 and to set your terminals title-bar, you can do that too:
+#
+# PROMPT_COMMAND='__git_ps1 "\u \W" "\\\$ " " [%s $(get_sha)] "; set_titlebar "$USER@${HOSTNAME%%.*} $(get_dir)"'
+# ##############
+#
+#
+#
+#
+#
+#
+#  audit_EXIT() {
+#      local AUDIT_STATUS="$?"
+#      if [ -n "$AUDIT_SYSLOG" ]
+#      then
+#          logger -p user.info -t "$AUDIT_STR" "#=== bash session ended. ==="
+#      else
+#          echo $( date +%F_%H:%M:%S ) "$AUDIT_STR" "#=== bash session ended. ===" >>/var/log/userlog.info
+#      fi
+#      exit "$AUDIT_STATUS"
+#  }
+#  #make audit trap functions readonly; disable trap DEBUG inherited (normally the default setting already)
+#  declare -fr +t audit_DEBUG
+#  declare -fr +t audit_EXIT
+#  if [ -n "$AUDIT_SYSLOG" ]
+#  then
+#      logger -p user.info -t "$AUDIT_STR" "#=== New bash session started. ===" #audit the session openning
+#  else
+#      echo $( date +%F_%H:%M:%S ) "$AUDIT_STR" "#=== New bash session started. ===" >>/var/log/userlog.info
+#  fi
+#  #when a bash command is executed it launches first the audit_DEBUG(),
+#  #then the trap DEBUG is disabled to avoid a useless rerun of audit_DEBUG() during the
+#  execution of pipes-commands;
+#  #at the end, when the prompt is displayed, re-enable the trap DEBUG
+#  declare -rx PROMPT_COMMAND="trap 'audit_DEBUG; trap DEBUG' DEBUG"
+#  declare -rx BASH_COMMAND #current command executed by user or a trap
+#  declare -rx SHELLOPT #shell options, like functrace
+#  trap audit_EXIT EXIT #audit the session closing
+#
+#
+###################
+#
+#  Alternatively, this can be made more readable with PROMPT_COMMAND:
+#
+#  set_prompt () {
+#      Last_Command=$? # Must come first!
+#      Blue='${BBlue}\]'
+#      White='${BWhite}\]'
+#      Red='${BRed}\]'
+#      Green='\e[01;32m\]'
+#      Reset='${Reset}\]'
+#      FancyX='\342\234\227'
+#      Checkmark='\342\234\223'
+#
+#      # Add a bright white exit status for the last command
+#      PS1="$White\$? "
+#      # If it was successful, print a green check mark. Otherwise, print
+#      # a red X.
+#      if [[ $Last_Command == 0 ]]; then
+#          PS1+="$Green$Checkmark "
+#      else
+#          PS1+="$Red$FancyX "
+#      fi
+#      # If root, just print the host in red. Otherwise, print the current user
+#      # and host in green.
+#      if [[ $EUID == 0 ]]; then
+#          PS1+="$Red\\h "
+#      else
+#          PS1+="$Green\\u@\\h "
+#      fi
+#      # Print the working directory and prompt marker in blue, and reset
+#      # the text color to the default.
+#      PS1+="$Blue\\w \\\$$Reset "
+#  }
+#  PROMPT_COMMAND='set_prompt'
+#
+###################
+
+check_screen()
+{
+    local prev_screen_lines=$screen_lines
+    screen_lines="$(tput lines)"
+    if [[ "${prev_screen_lines}" != "${screen_lines}" ]]
+    then
+        status_line=${screen_lines}
+        ((scroll_lines=status_line-1))
+        # set scrolling region of screen
+        echo -en "\e[1;${scroll_lines}r"
+        # go back to the bottom because changing scroll area moves the cursor
+        echo -en "\e[${scroll_lines};1H"
+    fi
+    #TODO get and store screen columns
+    # calculate and store prompt column info
+}
+
+
+get_branch() {
+    local branch=$(git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/\1/')
+#    if [ "${branch}" != "" ]
+#    then
+        if [ "${#branch}" -gt "20" ]
+        then
+            branch="{${branch:0:17}...}"
+        else
+            branch="{${branch}}"
+        fi
+        local pad
+        ((pad=22 - ${#branch}))
+#    fi
+    branch="${branch}$(tput cuf ${pad})"
+    echo ${branch}
+}
+
+get_venv()
+{
+    if [ "${VIRTUAL_ENV}" != "" ]
+    then
+        local venv=$(basename "${VIRTUAL_ENV}")
+        if [[ "${venv}" = "pyenv" ]]
+        then
+            local c=$(dirname "${VIRTUAL_ENV}")
+            local venv=$(basename "${c}")
+
+        fi
+    fi
+    local pad
+    ((pad=12 - ${#venv}))
+    venv="${venv}$(tput cuf ${pad})"
+    echo "${venv}"
+        #echo "(${venv})"
+}
+
+get_path()
+{
+    path=$(pwd)
+    if [ "${#path}" -gt "12" ]
+    then
+        local start
+        ((start=${#path} - 12))
+        path="${path:${start}:}"
+    fi
+    local pad
+    ((pad=12 - ${#path}))
+    path="${path}$(tput cuf ${pad})"
+    echo "${path}"
+}
+
+
+set_prompt ()
+{
+    prev_result=$? # Must come first!
+    if [[ ${EUID} == 0 ]]
+    then
+        # sudo prompt
+        PS1="${Red}\w # ${Reset}"
+    else
+        # keep prompt from counting characters as part of current line
+        PS1="\["
+        check_screen
+        # save cursor position
+        PS1+="\e[s"
+        # move to status line
+        PS1+="\e[${status_line};1H"
+        PS1+="${BG}"
+        # clear line
+        PS1+="\e[K"
+        if [[ "$prev_result" = "0" ]]
+        then
+            PS1+="${BGreen};) "
+        else
+            PS1+="${BRed}${prev_result} ;( "
+        fi
+        PS1+="${Yellow}$(get_venv) "
+        PS1+="${BCyan}$(get_path) "
+        PS1+="${BGreen}"
+        PS1+='$(get_branch) '
+        PS1+="${BBlue}\u@\h "
+        PS1+="${Reset}"
+        # put the cursor back where it started
+        PS1+="\e[u"
+#        PS1+="\e[${scroll_lines};1H"
+#        PS1+="${ResetBG}"
+        PS1+="\]"
+        PS1+="\$ "
+    fi
+    #PS1="\n\n\$ "
+
+}
+PROMPT_COMMAND=set_prompt
+
+#    Reset='\[\e[00m\]'
+#    FancyX='\342\234\227'
+#    Checkmark='\342\234\223'
+#
+#export PROMPT_COMMAND='echo -en "\033[m\033[38;5;2m"$(( `sed -n "s/MemFree:[\t ]\+\([0-9]\+\) kB/\1/p" /proc/meminfo`/1024))"\033[38;5;22m/"$((`sed -n "s/MemTotal:[\t ]\+\([0-9]\+\) kB/\1/Ip" /proc/meminfo`/1024 ))MB"\t\033[m\033[38;5;55m$(< /proc/loadavg)\033[m"' \
+#export PS1='\[\e[m\n\e[1;30m\][$$:$PPID \j:\!\[\e[1;30m\]]\[\e[0;36m\] \T \d \[\e[1;30m\][\[\e[1;34m\]\u@\H\[\e[1;30m\]:\[\e[0;37m\]${SSH_TTY} \[\e[0;32m\]+${SHLVL}\[\e[1;30m\]] \[\e[1;37m\]\w\[\e[0;37m\] \n($SHLVL:\!)\$ '
+#
+#case $TERM in
+#    xterm*|rxvt*)
+#        TITLEBAR='\[\033]0;\u@\h:\w\007\]'
+#        ;;
+#    *)
+#        TITLEBAR=""
+#        ;;
+#esac
