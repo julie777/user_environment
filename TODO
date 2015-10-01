@@ -1,5 +1,10 @@
-Things to try
+TODO
+- du -ch | sort -h
 
+Decide how to integrate package management for vim
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+Things to try
 
 alias
 

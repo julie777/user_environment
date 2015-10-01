@@ -1,0 +1,6 @@
+#!/usr/bin/python
+
+# TODO: fill it in
+#create a new bash file from a template
+
+cp templates/bash.tmpl to <filename> with substitution

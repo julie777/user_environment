@@ -34,8 +34,6 @@ alias m="less"
 alias dfh="df -h ."
 alias duh="du -sh"
 
-alias rm="rm -i"
-
 alias nose=nosetests
 alias nosed="nosetests --logging-clear-handlers --logging-level=DEBUG"
 alias g=git

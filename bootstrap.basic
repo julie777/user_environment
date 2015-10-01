@@ -1,0 +1,80 @@
+!/bin/bash
+set -x
+
+# Bootstrap the user customization of the linux environment so that permanent
+# information is stored in {HOME}/julie.env and
+# can be installed on any node with a simple git clone
+
+# this is the basic version for shared machines. It is designed to be simple and
+# not cause problems for other users.
+# Includes:
+#    basic vi support for languages, especially python
+#    soft tabs, etc.
+
+# This also allows changing linux environment for shared 
+# accounts by running bootstrap after login
+#
+# dir structure
+# linux_env
+#   /bash
+#       /.profile
+#       /.bash_profile
+#       /.bashrc
+#   /vim
+#       /.vimrc
+#   /git
+
+
+# git clone linux_env $HOME/$julie.env
+# > bootstrap
+
+# TODO: add support for a local directory to contain all the changing files
+# such as shell history
+
+#envdir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+#echo "script dir is $envdir"
+
+USER_ENV_DIR=$(dirname "$(readlink -f "${BASH_SOURCE}")")
+echo "script dir is $USER_ENV_DIR"
+#. ${USER_ENV_DIR}/env.conf
+
+
+#profile bash_profile bash_logout bashrc noserc pep8rc pylintrc vimrc Xdefaults
+for dotfile in ${USER_ENV_DIR}/basic_dot_files/*
+do
+    target=${HOME}/.$(basename ${dotfile})
+    echo "Linking ${target} to ${source}"
+    if [ -L ${target} ]
+    then
+        rm ${target}
+    fi
+    SAVE_DIR=${HOME}/original_env
+    mkdir ${SAVE_DIR}
+    if [ -e ${target} ]
+    then
+	echo "Moving ${target} to {SAVE_DIR} because file exists"
+    fi
+    ln -s ${source} ${target}
+done
+
+# directory links
+#for dir in bin
+#do
+#    target=${HOME}/${dir}
+#    source=${USER_ENV_DIR}/${dir}
+#    if [ -L ${target} ]
+#    then
+#        rm ${target}
+#    fi
+#    if [ -e ${target} ]
+#    then
+#	echo "ERROR: unable to create link ${target} because file exists"
+#    else
+#    	echo "Linking ${target} to ${source}"
+#    	ln -s ${source} ${target}
+#    fi
+#done
+
+# TODO:
+# dircolors
+

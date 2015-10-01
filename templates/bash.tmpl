@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 # Bash3 Boilerplate. Copyright (c) 2014, kvz.io
 
+
+-e	errexit	Abort script at first error, when a command exits with non-zero status
+-u	nounset	Attempt to use undefined variable outputs error message, and forces an exit
+-v	verbose	Print each command to stdout before executing it
+-x	xtrace	Similar to -v, but expands commands
+
 set -o errexit
 set -o pipefail
 set -o nounset

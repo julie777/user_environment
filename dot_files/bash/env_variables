@@ -22,12 +22,12 @@ _=/usr/bin/env
 # virtualenv
 VIRTUAL_ENV=
 VIRTUAL_ENV_DISABLE_PROMPT=1
-# virtualenvwarpper
+# virtualenvwrapper
+WORKON_HOME=/home/julie/venvs
+VIRTUALENVWRAPPER_WORKON_CD=1
 VIRTUALENVWRAPPER_HOOK_DIR=/home/julie/venvs
 VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 VIRTUALENVWRAPPER_PROJECT_FILENAME=.project
-WORKON_HOME=/home/julie/venvs
-VIRTUALENVWRAPPER_WORKON_CD=1
 
 ? SSH_CLIENT=192.168.91.1 58279 22
 ? SSH_TTY=/dev/pts/2
