@@ -1,3 +1,38 @@
 #!/bin/bash
+#set -x
+# TODO: there has to be a pattern
 
-grep --include "*.py" -r --exclude-dir local --exclude-dir tmp --exclude-dir pyenv --exclude-dir lib $* .
+# standard split of opts and nonopts - can be reused in any script
+opts=()
+nonopts=()
+for p in "$@";
+do
+    if [[ "${p}" == -* ]]
+    then
+        opts+=($p)
+    else
+        nonopts+=("$p")
+    fi
+done
+
+#du -sh * | sort -h
+
+places=("${nonopts[@]}")
+pattern=${places[0]}
+unset places[0]
+if [[ -z ${places[@]} ]]
+then
+    places+=('.')
+fi
+#echo places
+#for p in "${places[@]}"; do echo '    ' $p; done
+
+opts+=(-r
+       --include '*.py'
+       --exclude-dir local
+       --exclude-dir tmp
+       --exclude-dir pyenv
+       --exclude-dir lib)
+
+#bash showargs.sh "${opts[@]}" "${pattern}" "${places[@]}"
+grep "${opts[@]}" "${pattern}" "${places[@]}"

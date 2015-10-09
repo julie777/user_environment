@@ -1,0 +1,84 @@
+#    excludesfiles = sav
+#
+[core]
+    excludesfile = ~/.gitignore
+	editor = vi
+[julie]
+	jones = Julie Jones
+[user]
+	email = julie.jones@movenetworks.com
+	name = Julie Jones
+[difftool]
+	prompt = false
+[diff]
+	tool = p4merge
+	mnemonicprefix = true
+[merge]
+	tool = p4merge
+[mergetool]
+	prompt = false
+	keepBackup = false
+[push]
+	default = tracking
+[branch]
+	autosetupmerge = true
+[color]
+	ui = auto
+
+[alias]
+	a = add
+	aa = add --all
+	ae = add --edit
+	ai = add --interactive
+	amend = commit --amend -C HEAD
+	ap = add --patch
+	au = add --update
+	authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
+	b = branch -vv
+	c = commit
+	ca = commit --amend
+	changes = diff --name-status -r
+	cm = commit --message
+	co = checkout
+	cpc = cherry-pick
+	d = diff
+	dc = diff --cached
+	div = divergence
+	ds = diff --staged
+	dt = difftool
+	h = help
+	irb = rebase --interactive
+	l = "!git log --graph --pretty='tformat:%C(red)%h{%C(green)%ar{%C(bold blue)%an{%C(red)%d%C(reset) %s' $* | column -t -s '{' | less -FXRS"
+	lg = log --graph --pretty=format:'%Cred%h%Creset %an -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	ls-ignored = ls-files --exclude-standard --ignored --others
+	merge = merge --no-commit
+	m = merge
+	mm = merge --no-ff
+	msg = commit --allow-empty -m
+	news = log -p HEAD@{1}..HEAD@{0}
+	p = cherry-pick -s
+	pick = cherry-pick
+	prune-remotes = "!for remote in `git remote`; do git remote prune $remote; done"
+	r = remote
+	ra = !git log --graph --abbrev-commit --date=relative -20 --all --pretty='format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset'
+	rb = rebase
+	rba = rebase --abort
+	rbc = rebase --continue
+	rbs = rebase --skip
+	rh = reset --hard
+	ru = remote update --prune
+	s = status --short --branch
+	sl = shortlog
+	sm = submodule
+	sma = submodule add
+	smu = submodule update --init
+	st = stash
+	stl = stash list
+	stp = stash pop
+	undo = reset --soft HEAD@{1}
+	wd = diff --word-diff="color"
+	wds = diff --word-diff="color" --staged
+	push = push --tags
+	standup = log --since '1 day ago' --oneline --author julie.jones@movenetworks.com
+	unstage = reset HEAD
+[init]

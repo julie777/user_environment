@@ -27,11 +27,9 @@ USER_ENV_DIR=$(dirname "$(readlink -f "${BASH_SOURCE}")")
 . ${USER_ENV_DIR}/env.conf
 
 
-# TODO make list implicit
-for dotfile in profile bash_profile bash_logout bashrc noserc pep8rc pylintrc vimrc Xdefaults config
+for source in ${USER_ENV_DIR}/dot_files/*
 do
-    target=${HOME}/.${dotfile}
-    source=${USER_ENV_DIR}/dot_files/${dotfile}
+    target=${HOME}/.$(basename ${source})
     if [ -L ${target} ]
     then
         rm ${target}
