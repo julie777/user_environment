@@ -31,8 +31,8 @@ alias lsd='ls -d --group-directories-first'
 
 alias h="history"
 alias m="less"
+alias df="df -x tmpfs -x devtmpfs -h --output=used,avail,target"
 alias dfh="df -h ."
-alias duh="du -sh"
 
 alias nose=nosetests
 alias nosed="nosetests --logging-clear-handlers --logging-level=DEBUG"

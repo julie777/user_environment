@@ -1,13 +1,13 @@
 USER=julie
 LOGNAME=julie
 HOME=/home/julie
-
+TMPDIR=/tmp
 SHELL=/bin/bash
 SHLVL=1
 
 MAIL=/var/mail/julie
 PATH=/home/julie/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
-EDITOR=vi
+EDITOR=vim
 TERM=xterm-256color
 DISPLAY=localhost:12.0
 

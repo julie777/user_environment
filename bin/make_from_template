@@ -1,0 +1,87 @@
+#!/bin/bash
+
+# this is the generic script to make a file from a template with variable replacement.
+# it will normally be used by creating a specific command that binds the first arguement
+# to the template name
+
+set -e
+# set -x
+# set -p
+
+if [[ -z ${1} ]]
+then
+    echo Missing template name argument
+    exit 1
+fi
+shift
+
+
+usage() {
+    cat <<EOF
+Usage: mk<filetype> NEWFILE  [VAR=value [VAR=value]]"
+
+mk<type> creates a file from a template. This makes it easier to include common functionality
+and support best practices while still allowing quick and convenient creation.
+
+Templates for the various file types may have variables that can be replaced to customize
+the template. The variables can be provided on the command line, or changed during
+file edit.
+
+Example:
+    Template:
+
+        #!/bin/bash
+        echo @GREETING @NAME@
+
+    Create file from template:
+
+        $ mkhello sayhello GREETING=hi NAME=fred
+
+    Contents of sayhello:
+
+        #!/bin/bash
+        echo hi fred
+
+EOF
+}
+
+outfile=${1:---help}
+
+if [[ "${outfile}" == "--help" ]]
+then
+    usage
+    exit 0
+fi
+
+tmp=/tmp/${outfile}
+name=${outfile}
+findvariables="grep -E @.+@ ${tmp}"
+
+#echo Creating temp file in ${tmp}
+cp /home/julie/julie.env/templates/bash ${tmp}
+#echo Replacing variables
+sed -i -e "s/@name@/${name}/" ${tmp}
+
+if ${findvariables} &> /dev/null
+then
+    echo "INFO: Not all variables were replaced. (Run with no args to see usage)"
+    echo "Template lines with unreplaced variables:"
+    ${findvariables}
+    echo
+fi
+#echo Moving ${tmp} to ${outfile}
+if [ -f "${outfile}" ]
+then
+    echo "${outfile} exists."
+    read -p "Overwrite? " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]
+    then
+        echo "New version of ${outfile} saved in /tmp for review"
+        exit 0
+    fi
+fi
+
+mv ${tmp} ${outfile}
+
+#${EDIT} ${outfile}

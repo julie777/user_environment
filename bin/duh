@@ -8,4 +8,7 @@ else
     args='*'
 fi
 
+#echo args are "$args"
+#echo command is:
+#echo "du -sh ${args} | sort -h"
 du -sh ${args} | sort -h

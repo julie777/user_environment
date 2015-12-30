@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Produced by Beyond Compare 4 from Scooter Software -->
+<BCState Version="1" MinVersion="1">
+	<TBcState>
+		<FirstStartup Value="False"/>
+		<FormPositions>
+			<TDirLoadErrorDialog Value="406;332;873;452"/>
+			<TProfileBrowseDialog Value="275;52;1004;733"/>
+			<TViewFrame Value="0;22;1278;763"/>
+		</FormPositions>
+	</TBcState>
+	<TCheckForUpdatesState>
+		<Build Value="20720"/>
+		<CheckID Value="231996953460736"/>
+		<LastChecked Value="2015-12-05 20:34:17"/>
+	</TCheckForUpdatesState>
+	<TDirCompareState>
+		<LeftMRUSpecs>
+			<_0 Value="/home/julie/scale-work/measurement/"/>
+		</LeftMRUSpecs>
+		<RightMRUSpecs>
+			<_0 Value="/home/julie/scale-work/mcheck/"/>
+		</RightMRUSpecs>
+	</TDirCompareState>
+	<THomeState>
+		<SessionType Value="TTextCompareSession"/>
+	</THomeState>
+	<TTextCompareState>
+		<LeftMRUSpecs>
+			<_0 Value="/home/julie/scale-work/measurement/measure-it"/>
+			<_1 Value="/home/julie/scale-work/measurement/measure-it3b"/>
+			<_2 Value="/home/julie/scale-work/measurement/measure-it2"/>
+			<_3 Value="/home/julie/scale-work/measurement/cmshelper.py"/>
+			<_4 Value="/home/julie/scale-work/measurement/fill-it"/>
+			<_5 Value="/home/julie/scale-work/measurement/count-it"/>
+			<_6 Value="/home/julie/scale-work/measurement/unfill-it"/>
+			<_7 Value="/home/julie/scale-work/measurement/__init__.py"/>
+		</LeftMRUSpecs>
+		<MRUFonts>
+			<_0 Value="Andale Mono;9"/>
+		</MRUFonts>
+		<RightMRUSpecs>
+			<_0 Value="/home/julie/scale-work/measurement/m2"/>
+			<_1 Value="/home/julie/scale-work/measurement/measure-it4"/>
+			<_2 Value="/home/julie/scale-work/measurement/measure-it2"/>
+			<_3 Value="/home/julie/scale-work/measurement/measure-it3"/>
+			<_4 Value="/home/julie/scale-work/measurement/measure-itimg"/>
+			<_5 Value="/home/julie/scale-work/mold/cmshelper.py"/>
+			<_6 Value="/home/julie/scale-work/m4/fill-it"/>
+			<_7 Value="/home/julie/scale-work/m4/measure-it"/>
+			<_8 Value="/home/julie/scale-work/m4/cmshelper.py"/>
+		</RightMRUSpecs>
+	</TTextCompareState>
+</BCState>

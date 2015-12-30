@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Produced by Beyond Compare 4 from Scooter Software -->
+<BCSessions Version="1" MinVersion="1">
+	<TSessionFolder>
+		<Items>
+			<TSessionFolder>
+				<Items>
+					<TTextCompareSession Value="measure-it &lt;--> m2">
+						<LastModified Value="2015-12-05 20:47:08"/>
+						<Specs>
+							<Left Value="/home/julie/scale-work/measurement/measure-it"/>
+							<Right Value="/home/julie/scale-work/measurement/m2"/>
+						</Specs>
+					</TTextCompareSession>
+					<TTextCompareSession Value="measure-it &lt;--> measure-it4">
+						<LastModified Value="2015-12-05 20:39:04"/>
+						<Specs>
+							<Left Value="/home/julie/scale-work/measurement/measure-it"/>
+							<Right Value="/home/julie/scale-work/measurement/measure-it4"/>
+						</Specs>
+					</TTextCompareSession>
+					<TDirCompareSession Value="/home/julie/scale-work/measurement/ &lt;--> /home/julie/scale-work/mcheck/">
+						<LastModified Value="2015-11-27 00:08:30"/>
+						<Specs>
+							<Left Value="/home/julie/scale-work/measurement/"/>
+							<Right Value="/home/julie/scale-work/mcheck/"/>
+						</Specs>
+					</TDirCompareSession>
+				</Items>
+			</TSessionFolder>
+		</Items>
+	</TSessionFolder>
+</BCSessions>

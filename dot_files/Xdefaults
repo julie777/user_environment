@@ -1,1 +1,2 @@
-XTerm*termName:         xterm-256color
+*customization: -color
+XTerm*termName:  xterm-256color

@@ -1,0 +1,2 @@
+#!/bin/bash
+make_from_template bash 

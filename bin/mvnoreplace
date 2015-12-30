@@ -1,0 +1,7 @@
+#!/usr/bin/python
+
+'''
+mv file(s) to new directory without replacing exsting files.
+The final arguement must be a directory and will be created if it does not exist
+when there is an existing file then the new file will have a "copy" number appended
+as in x.py -> <newdir>/x.py.2

@@ -13,11 +13,20 @@ Plugin 'VundleVim/Vundle.vim'
 "Plugin 'Autopep8.vim'
 Plugin 'bling/vim-airline'
 Plugin 'BufferGator'
+Plugin 'delimitMate'
+Plugin 'pyflakes'
+"Plugin 'nerdcommenter'
+Plugin 'supertab'
+Plugin 'tpope/vim-surround'
+"Plugin 'yaml.vim'
 " Plugin 'Syntastic'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 "
+" from git-hub just repo
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'altercation/vim-colors-solarized'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -68,8 +77,11 @@ set softtabstop=4
 set autoindent
 set noic
 syntax on
+syntax enable
+set background=light
+"colorscheme solarized
 
-set background=dark
+" set background=dark
 set showmatch
 set smartcase
 set ai
@@ -85,6 +97,7 @@ set foldenable
 set foldnestmax=10
 set foldlevelstart=0
 set foldmethod=indent
+set timeoutlen=300
 "set foldmethod=syntax
 autocmd BufWinEnter * normal zR
 noremap <space> za
@@ -92,7 +105,9 @@ noremap - zm
 noremap = zr
 noremap _ zM
 noremap + zR
-:imap jj <Esc>
+inoremap jj <Esc>
+noremap :! :!clear;
+noremap rn :!!<CR>
 
 hi MatchParen cterm=bold ctermbg=none ctermfg=magenta
 hi MatchParen cterm=underline ctermbg=none ctermfg=none
@@ -104,6 +119,10 @@ func! DeleteTrailingWS()
     %s/\s\+$//ge
       exe "normal `z"
 endfunc
+
+" force write with sudo
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
 
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite * :call DeleteTrailingWS()

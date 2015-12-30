@@ -1,5 +1,6 @@
 #!/bin/bash
 
-sudo mount -t vboxsf -o rw,gid=vboxsf  extlogs /media/sf_extlogs
+#sudo mount -t vboxsf -o rw,gid=vboxsf  extlogs /media/sf_extlogs
 sudo mount -t vboxsf -o rw,gid=vboxsf  s_drive /media/sf_s_drive
+sudo mount -t vboxsf -o rw,gid=vboxsf  t_drive /media/sf_t_drive
 
