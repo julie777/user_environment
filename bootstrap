@@ -1,8 +1,12 @@
 #!/bin/bash
+set -e
 
 # Bootstrap the user customization of the linux environment so that permanent
 # information is stored in {HOME}/julie.env and
 # can be installed on any node with a simple git clone
+# TODO: add minimal option to use on machines that I don't own
+#           mkdir julie and install there and find a way to use my vimrc and bashrc
+#             maybe setting $HOME will do it
 
 # This also allows changing linux environment for shared accounts by running bootstrap after login
 #
@@ -27,6 +31,7 @@ USER_ENV_DIR=$(dirname "$(readlink -f "${BASH_SOURCE}")")
 . ${USER_ENV_DIR}/env.conf
 
 
+echo Creating dot files
 for source in ${USER_ENV_DIR}/dot_files/*
 do
     target=${HOME}/.$(basename ${source})
@@ -43,7 +48,7 @@ do
     fi
 done
 
-# directory links
+echo Linking directories
 for dir in bin
 do
     target=${HOME}/${dir}
@@ -63,4 +68,15 @@ done
 
 # TODO:
 # dircolors
+
+echo Generating file creation commands
+# add file creation from templates
+for templatefile in templates/*
+do
+    templatefile=$(realpath ${templatefile})
+    makecommand=~/bin/mk$(basename ${templatefile})
+    echo Creating ${makecommand}
+    printf "#!/bin/bash\nmake_from_template bash \$*\n" > ${makecommand}
+    chmod +x ${makecommand}
+done
 

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sudo apt-get install realpath
+sudo pip install virtualenv virtuenvwrapper requests pylint pep8
+
+

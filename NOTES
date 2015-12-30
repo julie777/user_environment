@@ -13,3 +13,17 @@ To make dircolors read a ~/.dircolors file if it exists, you can put the followi
 d=.dircolors
 test -r $d && eval "$(dircolors $d)"
 
+Interesting VIM colors
+http://fugal.net/vim/colors/desert.vim
+
+
+VIM
+
+
+    If you want to use a foldmethod other than "manual" all the time, add this line to your ~/.vimrc:
+        set foldmethod=foldoption
+
+        I would recommend using foldmethod=indent. This will fold based on any indent. Then if you change your input to include the indents where you want folds to happen. For instance if you change your input to
+
+Write a file after a no permission error
+    :w !sudo tee %

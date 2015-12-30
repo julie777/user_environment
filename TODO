@@ -1,4 +1,26 @@
 TODO
+
+add tests and notification during startup
+    $ tput colors
+    256
+    $ echo $TERM
+    xterm-256color
+
+
+ In vim, :set t_Co should now report that you have 256 colors available. Run locate vim | grep 256 to find the color schemes available, and :colo desert256 to use one. If none of those suit you, there are plenty more available. I put a little code in my ~/.vimrc to only load it when I have colors available, because sometimes I use different terminals.
+
+colorscheme desert
+if &t_Co > 2 || has("gui_running")
+   syntax on
+   endif
+   if &t_Co == 256
+     colorscheme inkpot
+ endif
+
+git clone git://github.com/altercation/solarized.git
+
+
+
 - du -ch | sort -h
 
 Decide how to integrate package management for vim

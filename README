@@ -1,0 +1,5 @@
+
+wget -q https://package.perforce.com/perforce.pubkey -O - | sudo apt-key add -
+/perforce.list with the following line:
+
+deb http://package.perforce.com/apt/ubuntu {distro} release
